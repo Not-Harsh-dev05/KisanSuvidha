@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FarmerRouteImport } from './routes/farmer'
+import { Route as ProcurementRouteImport } from './routes/procurement'
+import { Route as QueueRouteImport } from './routes/queue'
+import { Route as RegisterCropRouteImport } from './routes/register-crop'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +25,59 @@ const FarmerRoute = FarmerRouteImport.update({
   path: '/farmer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProcurementRoute = ProcurementRouteImport.update({
+  id: '/procurement',
+  path: '/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueRoute = QueueRouteImport.update({
+  id: '/queue',
+  path: '/queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterCropRoute = RegisterCropRouteImport.update({
+  id: '/register-crop',
+  path: '/register-crop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/farmer': typeof FarmerRoute
+  '/procurement': typeof ProcurementRoute
+  '/queue': typeof QueueRoute
+  '/register-crop': typeof RegisterCropRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/farmer': typeof FarmerRoute
+  '/procurement': typeof ProcurementRoute
+  '/queue': typeof QueueRoute
+  '/register-crop': typeof RegisterCropRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/farmer': typeof FarmerRoute
+  '/procurement': typeof ProcurementRoute
+  '/queue': typeof QueueRoute
+  '/register-crop': typeof RegisterCropRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/farmer'
+  fullPaths: '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/farmer'
-  id: '__root__' | '/' | '/farmer'
+  to: '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
+  id:
+    '__root__' | '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FarmerRoute: typeof FarmerRoute
+  ProcurementRoute: typeof ProcurementRoute
+  QueueRoute: typeof QueueRoute
+  RegisterCropRoute: typeof RegisterCropRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +96,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FarmerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/procurement': {
+      id: '/procurement'
+      path: '/procurement'
+      fullPath: '/procurement'
+      preLoaderRoute: typeof ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue': {
+      id: '/queue'
+      path: '/queue'
+      fullPath: '/queue'
+      preLoaderRoute: typeof QueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register-crop': {
+      id: '/register-crop'
+      path: '/register-crop'
+      fullPath: '/register-crop'
+      preLoaderRoute: typeof RegisterCropRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FarmerRoute: FarmerRoute,
+  ProcurementRoute: ProcurementRoute,
+  QueueRoute: QueueRoute,
+  RegisterCropRoute: RegisterCropRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
