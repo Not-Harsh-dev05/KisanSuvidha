@@ -166,7 +166,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [chosenPath, setChosenPath] = useState<"procurement" | "market" | null>(null);
 
   const [centreId, setCentreId] = useState("rampur");
-  const centre = procurementCentres.find((c) => c.id === centreId) ?? procurementCentres[0];
+  const centre = procurementCentres.find((c) => c.id === centreId) ?? procurementCentres[0]!;
   const [currentToken, setCurrentToken] = useState(121);
   const [paused, setPaused] = useState(false);
   const [completedTokens, setCompletedTokens] = useState<number[]>([]);
