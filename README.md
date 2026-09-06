@@ -1,7 +1,4 @@
 # Kisan Sahayak
-
-Build a frontend-only prototype for a Smart India Hackathon 2026 project that solves TWO related problem statements through ONE unified platform.
-
 PROBLEM STATEMENT 1:
 
 SIH26032 — Farmer Procurement Status & Waiting-Time Uncertainty
