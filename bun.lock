@@ -1,5 +1,5 @@
 {
-  "lockfileVersion": 1,
+  "lockfileVersion": 1, // Bunlock
   "configVersion": 1,
   "workspaces": {
     "": {
