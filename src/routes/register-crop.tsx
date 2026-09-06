@@ -35,13 +35,13 @@ function RegisterCrop() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.farmerName.trim()) e.farmerName = "Enter the farmer's full name.";
+    if (!form.farmerName.trim()) e["farmerName"] = "Enter the farmer's full name.";
     if (!/^[0-9 ]{10,12}$/.test(form.mobile.trim()))
-      e.mobile = "Enter a valid 10-digit mobile number.";
-    if (!form.village.trim()) e.village = "Enter the village name.";
+      e["mobile"] = "Enter a valid 10-digit mobile number.";
+    if (!form.village.trim()) e["village"] = "Enter the village name.";
     const q = Number(form.quantity);
-    if (!q || q <= 0) e.quantity = "Enter quantity greater than zero.";
-    if (!form.availableDate) e.availableDate = "Select the expected availability date.";
+    if (!q || q <= 0) e["quantity"] = "Enter quantity greater than zero.";
+    if (!form.availableDate) e["availableDate"] = "Select the expected availability date.";
     return e;
   };
 
@@ -73,7 +73,7 @@ function RegisterCrop() {
           ) : null}
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            <FormField label="Farmer Name" htmlFor="farmerName" required error={errors.farmerName}>
+            <FormField label="Farmer Name" htmlFor="farmerName" required error={(errors["farmerName"] ?? "")}>
               <input
                 id="farmerName"
                 className={fieldClass}
@@ -86,7 +86,7 @@ function RegisterCrop() {
               htmlFor="mobile"
               required
               hint="10-digit mobile number for SMS updates"
-              error={errors.mobile}
+              error={(errors["mobile"] ?? "")}
             >
               <input
                 id="mobile"
@@ -120,7 +120,7 @@ function RegisterCrop() {
                 ))}
               </select>
             </FormField>
-            <FormField label="Village" htmlFor="village" required error={errors.village}>
+            <FormField label="Village" htmlFor="village" required error={(errors["village"] ?? "")}>
               <input
                 id="village"
                 className={fieldClass}
@@ -140,7 +140,7 @@ function RegisterCrop() {
                 ))}
               </select>
             </FormField>
-            <FormField label="Quantity" htmlFor="quantity" required error={errors.quantity}>
+            <FormField label="Quantity" htmlFor="quantity" required error={(errors["quantity"] ?? "")}>
               <input
                 id="quantity"
                 inputMode="numeric"
@@ -164,7 +164,7 @@ function RegisterCrop() {
               label="Expected Harvest / Availability Date"
               htmlFor="availableDate"
               required
-              error={errors.availableDate}
+              error={(errors["availableDate"] ?? "")}
             >
               <input
                 id="availableDate"
