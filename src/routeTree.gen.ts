@@ -10,19 +10,62 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuyersRouteImport } from './routes/buyers'
 import { Route as FarmerRouteImport } from './routes/farmer'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as LogisticsRouteImport } from './routes/logistics'
+import { Route as MarketRouteImport } from './routes/market'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as OfficerRouteImport } from './routes/officer'
+import { Route as PricesRouteImport } from './routes/prices'
 import { Route as ProcurementRouteImport } from './routes/procurement'
 import { Route as QueueRouteImport } from './routes/queue'
 import { Route as RegisterCropRouteImport } from './routes/register-crop'
+import { Route as TransactionsRouteImport } from './routes/transactions'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyersRoute = BuyersRouteImport.update({
+  id: '/buyers',
+  path: '/buyers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FarmerRoute = FarmerRouteImport.update({
   id: '/farmer',
   path: '/farmer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogisticsRoute = LogisticsRouteImport.update({
+  id: '/logistics',
+  path: '/logistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfficerRoute = OfficerRouteImport.update({
+  id: '/officer',
+  path: '/officer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricesRoute = PricesRouteImport.update({
+  id: '/prices',
+  path: '/prices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProcurementRoute = ProcurementRouteImport.update({
@@ -40,44 +83,120 @@ const RegisterCropRoute = RegisterCropRouteImport.update({
   path: '/register-crop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buyers': typeof BuyersRoute
   '/farmer': typeof FarmerRoute
+  '/help': typeof HelpRoute
+  '/logistics': typeof LogisticsRoute
+  '/market': typeof MarketRoute
+  '/notifications': typeof NotificationsRoute
+  '/officer': typeof OfficerRoute
+  '/prices': typeof PricesRoute
   '/procurement': typeof ProcurementRoute
   '/queue': typeof QueueRoute
   '/register-crop': typeof RegisterCropRoute
+  '/transactions': typeof TransactionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buyers': typeof BuyersRoute
   '/farmer': typeof FarmerRoute
+  '/help': typeof HelpRoute
+  '/logistics': typeof LogisticsRoute
+  '/market': typeof MarketRoute
+  '/notifications': typeof NotificationsRoute
+  '/officer': typeof OfficerRoute
+  '/prices': typeof PricesRoute
   '/procurement': typeof ProcurementRoute
   '/queue': typeof QueueRoute
   '/register-crop': typeof RegisterCropRoute
+  '/transactions': typeof TransactionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buyers': typeof BuyersRoute
   '/farmer': typeof FarmerRoute
+  '/help': typeof HelpRoute
+  '/logistics': typeof LogisticsRoute
+  '/market': typeof MarketRoute
+  '/notifications': typeof NotificationsRoute
+  '/officer': typeof OfficerRoute
+  '/prices': typeof PricesRoute
   '/procurement': typeof ProcurementRoute
   '/queue': typeof QueueRoute
   '/register-crop': typeof RegisterCropRoute
+  '/transactions': typeof TransactionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
+  fullPaths:
+    | '/'
+    | '/buyers'
+    | '/farmer'
+    | '/help'
+    | '/logistics'
+    | '/market'
+    | '/notifications'
+    | '/officer'
+    | '/prices'
+    | '/procurement'
+    | '/queue'
+    | '/register-crop'
+    | '/transactions'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
+  to:
+    | '/'
+    | '/buyers'
+    | '/farmer'
+    | '/help'
+    | '/logistics'
+    | '/market'
+    | '/notifications'
+    | '/officer'
+    | '/prices'
+    | '/procurement'
+    | '/queue'
+    | '/register-crop'
+    | '/transactions'
   id:
-    '__root__' | '/' | '/farmer' | '/procurement' | '/queue' | '/register-crop'
+    | '__root__'
+    | '/'
+    | '/buyers'
+    | '/farmer'
+    | '/help'
+    | '/logistics'
+    | '/market'
+    | '/notifications'
+    | '/officer'
+    | '/prices'
+    | '/procurement'
+    | '/queue'
+    | '/register-crop'
+    | '/transactions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuyersRoute: typeof BuyersRoute
   FarmerRoute: typeof FarmerRoute
+  HelpRoute: typeof HelpRoute
+  LogisticsRoute: typeof LogisticsRoute
+  MarketRoute: typeof MarketRoute
+  NotificationsRoute: typeof NotificationsRoute
+  OfficerRoute: typeof OfficerRoute
+  PricesRoute: typeof PricesRoute
   ProcurementRoute: typeof ProcurementRoute
   QueueRoute: typeof QueueRoute
   RegisterCropRoute: typeof RegisterCropRoute
+  TransactionsRoute: typeof TransactionsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -89,11 +208,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buyers': {
+      id: '/buyers'
+      path: '/buyers'
+      fullPath: '/buyers'
+      preLoaderRoute: typeof BuyersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/farmer': {
       id: '/farmer'
       path: '/farmer'
       fullPath: '/farmer'
       preLoaderRoute: typeof FarmerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logistics': {
+      id: '/logistics'
+      path: '/logistics'
+      fullPath: '/logistics'
+      preLoaderRoute: typeof LogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/officer': {
+      id: '/officer'
+      path: '/officer'
+      fullPath: '/officer'
+      preLoaderRoute: typeof OfficerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prices': {
+      id: '/prices'
+      path: '/prices'
+      fullPath: '/prices'
+      preLoaderRoute: typeof PricesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/procurement': {
@@ -117,15 +285,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterCropRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuyersRoute: BuyersRoute,
   FarmerRoute: FarmerRoute,
+  HelpRoute: HelpRoute,
+  LogisticsRoute: LogisticsRoute,
+  MarketRoute: MarketRoute,
+  NotificationsRoute: NotificationsRoute,
+  OfficerRoute: OfficerRoute,
+  PricesRoute: PricesRoute,
   ProcurementRoute: ProcurementRoute,
   QueueRoute: QueueRoute,
   RegisterCropRoute: RegisterCropRoute,
+  TransactionsRoute: TransactionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
