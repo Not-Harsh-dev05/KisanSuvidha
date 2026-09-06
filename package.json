@@ -2,7 +2,7 @@
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
-  "type": "module",
+  "type": "module", // Module in it 
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
