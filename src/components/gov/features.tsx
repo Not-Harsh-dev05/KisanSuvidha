@@ -200,36 +200,41 @@ export function LogisticsCalculator() {
 
       <Panel title="Available Transport Options">
         <ul className="space-y-2">
-          {transportOptions.map((t) => (
-            <li
-              key={t.id}
-              className={cn(
-                "flex flex-wrap items-center justify-between gap-2 border p-3",
-                selectedTransportId === t.id
-                  ? "border-success bg-success-soft"
-                  : "border-border bg-surface",
-              )}
-            >
-              <div>
-                <p className="text-sm font-bold">{t.name}</p>
-                <p className="text-xs text-muted-foreground">
-                  Capacity: {t.capacity} · Availability: {t.availability}
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold tabular-nums">
-                  {inr(Math.round((t.estimate * (buyer?.distanceKm ?? 32)) / 32))}
-                </span>
-                {selectedTransportId === t.id ? (
-                  <StatusBadge tone="success">Selected</StatusBadge>
-                ) : (
-                  <GovButton size="sm" onClick={() => selectTransport(t.id)}>
-                    Select Transport
-                  </GovButton>
+          {transportOptions.map((t) => {
+            const distKm = buyer?.distanceKm ?? 32;
+            const quantityQuintals = quantity / 100;
+            const computedCost = Math.round(t.ratePerKmPerQuintal * distKm * quantityQuintals);
+            return (
+              <li
+                key={t.id}
+                className={cn(
+                  "flex flex-wrap items-center justify-between gap-2 border p-3",
+                  selectedTransportId === t.id
+                    ? "border-success bg-success-soft"
+                    : "border-border bg-surface",
                 )}
-              </div>
-            </li>
-          ))}
+              >
+                <div>
+                  <p className="text-sm font-bold">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    Capacity: {t.capacity} · ₹{t.ratePerKmPerQuintal}/km/quintal · {t.availability}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-semibold tabular-nums">
+                    {inr(computedCost)}
+                  </span>
+                  {selectedTransportId === t.id ? (
+                    <StatusBadge tone="success">Selected</StatusBadge>
+                  ) : (
+                    <GovButton size="sm" onClick={() => selectTransport(t.id)}>
+                      Select Transport
+                    </GovButton>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </Panel>
     </div>

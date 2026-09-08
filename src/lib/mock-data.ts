@@ -106,24 +106,24 @@ export const transportOptions = [
     id: "local-transporter",
     name: "Local Transporter (Shared Load)",
     capacity: "Up to 2,000 kg",
-    ratePerKmPerQuintal: 0,
-    estimate: 2600,
+    ratePerKmPerQuintal: 8, // ₹8 per km per quintal
+    estimate: 2560, // 8 × 32 km × 10 quintals (base 1,000 kg load)
     availability: "Available today",
   },
   {
     id: "tractor-trolley",
     name: "Tractor / Trolley",
     capacity: "Up to 3,500 kg",
-    ratePerKmPerQuintal: 0,
-    estimate: 4200,
+    ratePerKmPerQuintal: 6, // ₹6 per km per quintal — cheaper per unit, larger load
+    estimate: 4032, // 6 × 32 km × 21 quintals (base 2,100 kg load)
     availability: "Available from 07 Sep 2026",
   },
   {
     id: "small-truck",
     name: "Small Truck (Mahindra Bolero Pickup)",
     capacity: "Up to 6,000 kg",
-    ratePerKmPerQuintal: 0,
-    estimate: 5400,
+    ratePerKmPerQuintal: 5, // ₹5 per km per quintal — most cost-efficient at scale
+    estimate: 5600, // 5 × 32 km × 35 quintals (base 3,500 kg load)
     availability: "Available today",
   },
 ];

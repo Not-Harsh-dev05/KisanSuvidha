@@ -168,9 +168,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [centreId, setCentreId] = useState("rampur");
   const centre = procurementCentres.find((c) => c.id === centreId) ?? procurementCentres[0]!;
   const [currentToken, setCurrentToken] = useState(121);
+  const [farmerToken, setFarmerToken] = useState(147);
   const [paused, setPaused] = useState(false);
   const [completedTokens, setCompletedTokens] = useState<number[]>([]);
-  const farmerToken = 147;
 
   const [offers, setOffers] = useState<OfferRecord[]>([]);
   const [selectedBuyerId, setSelectedBuyerId] = useState<string | null>(null);
@@ -274,6 +274,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       registerCrop: (c) => {
         setCrop(c);
         setCropRegistered(true);
+        // Assign a new token ahead of the current serving token
+        setFarmerToken((prev) => Math.max(prev, currentToken + 1));
       },
       chosenPath,
       setChosenPath,
@@ -320,6 +322,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       cropRegistered,
       chosenPath,
       currentToken,
+      farmerToken,
       paused,
       centre,
       centreId,
