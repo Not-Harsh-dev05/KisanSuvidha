@@ -11,6 +11,7 @@ import {
 import { NotificationPanel } from "@/components/gov/features";
 import { buyers, formatMinutes, inr } from "@/lib/mock-data";
 import { useAppState } from "@/state/app-state";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/farmer")({
   head: () => ({
@@ -43,35 +44,38 @@ function FarmerDashboard() {
     paused,
     offers,
     respondToOffer,
+    language,
   } = useAppState();
 
   const pending = offers.filter((o) => o.status === "Offer Sent" || o.status === "Counter Sent");
+  const farmerId = `KPS-2026-${String(farmerToken).padStart(5, "0")}`;
+  const tr = useT(language);
 
   return (
     <PageShell
-      title="Farmer Dashboard"
-      subtitle="One crop, two selling paths — government procurement or direct market."
-      crumbs={[{ label: "Home", to: "/" }, { label: "Farmer Dashboard" }]}
-      actions={<GovLinkButton to="/register-crop">Register New Crop</GovLinkButton>}
+      title={tr("farmer_title")}
+      subtitle={tr("farmer_subtitle")}
+      crumbs={[{ label: tr("nav_home"), to: "/" }, { label: tr("farmer_title") }]}
+      actions={<GovLinkButton to="/register-crop">{tr("home_btn_register")}</GovLinkButton>}
     >
-      <Panel title="Farmer Profile">
+      <Panel title={tr("farmer_profile")}>
         <dl className="grid gap-2 text-sm sm:grid-cols-4">
           <div>
-            <dt className="text-xs font-semibold text-muted-foreground uppercase">Farmer</dt>
-            <dd className="font-bold">Ramesh Kumar</dd>
+            <dt className="text-xs font-semibold text-muted-foreground uppercase">{tr("farmer_label")}</dt>
+            <dd className="font-bold">{crop.farmerName}</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold text-muted-foreground uppercase">Farmer ID</dt>
-            <dd className="font-bold tabular-nums">KPS-2026-00147</dd>
+            <dt className="text-xs font-semibold text-muted-foreground uppercase">{tr("farmer_id")}</dt>
+            <dd className="font-bold tabular-nums">{farmerId}</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold text-muted-foreground uppercase">Registered Crop</dt>
+            <dt className="text-xs font-semibold text-muted-foreground uppercase">{tr("farmer_crop_label")}</dt>
             <dd className="font-bold">
               {crop.crop} · {crop.quantity.toLocaleString("en-IN")} {crop.unit} · Grade {crop.grade}
             </dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold text-muted-foreground uppercase">Location</dt>
+            <dt className="text-xs font-semibold text-muted-foreground uppercase">{tr("farmer_location")}</dt>
             <dd className="font-bold">
               {crop.village}, {crop.district}, {crop.state}
             </dd>
