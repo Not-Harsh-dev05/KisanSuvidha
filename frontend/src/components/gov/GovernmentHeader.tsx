@@ -56,18 +56,31 @@ export function GovernmentHeader() {
         <div className="mx-auto flex max-w-[78rem] flex-wrap items-center justify-between gap-2 px-3 py-1 text-xs">
           <p>Government Services Portal</p>
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={toggleLanguage}
-              className="underline underline-offset-2"
-              aria-pressed={language === "hi"}
-            >
-              {language === "hi" ? "हिन्दी" : "हिन्दी"}
-            </button>
-            <span aria-hidden="true">|</span>
-            <button type="button" onClick={toggleLanguage} className="underline underline-offset-2">
-              English
-            </button>
+           <button
+  type="button"
+  onClick={toggleLanguage}
+  disabled={language === "hi"}
+  aria-current={language === "hi" ? "true" : undefined}
+  className={cn(
+    "underline-offset-2",
+    language === "hi" ? "font-bold" : "underline",
+  )}
+>
+  हिन्दी
+</button>
+<span aria-hidden="true">|</span>
+<button
+  type="button"
+  onClick={toggleLanguage}
+  disabled={language === "en"}
+  aria-current={language === "en" ? "true" : undefined}
+  className={cn(
+    "underline-offset-2",
+    language === "en" ? "font-bold" : "underline",
+  )}
+>
+  English
+</button>
             <span aria-hidden="true">|</span>
             <Link to="/help" className="underline underline-offset-2">
               Accessibility
