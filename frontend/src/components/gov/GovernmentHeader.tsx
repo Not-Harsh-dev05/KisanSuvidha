@@ -49,6 +49,10 @@ export function GovernmentHeader() {
     document.documentElement.style.setProperty("--gov-base-font-size", `${fontScale}px`);
   }, [fontScale]);
 
+  useEffect(() => {
+  document.documentElement.lang = language;
+}, [language]);
+
   return (
     <header className="border-b-4 border-saffron bg-surface">
       {/* utility bar */}
