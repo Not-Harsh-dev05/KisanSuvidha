@@ -1,16 +1,10 @@
-from __future__ import annotations
-
 from enum import Enum
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 
 class AgentStatus(str, Enum):
-    """
-    Represents the current lifecycle state of the agent.
-    """
-
     IDLE = "idle"
     UNDERSTANDING = "understanding"
     COLLECTING_INFORMATION = "collecting_information"
@@ -22,31 +16,38 @@ class AgentStatus(str, Enum):
 
 
 class AgentState(BaseModel):
-    """
-    Structured state of a single farmer-agent session.
-
-    This is deliberately independent of Django models.
-    """
-
     session_id: str
-    user_id: str | None = None
 
-    district: str | None = None
+    user_id: Optional[str] = None
 
-    language: str = "en"
-    script: str = "Latin"
+    district: Optional[str] = None
 
-    current_goal: str | None = None
-    intent: str | None = None
-    current_step: str | None = None
+    language: Optional[str] = None
 
-    collected_information: dict[str, Any] = Field(default_factory=dict)
-    missing_information: list[str] = Field(default_factory=list)
+    script: Optional[str] = None
 
-    pending_action: str | None = None
+    current_goal: Optional[str] = None
 
-    conversation_context: list[str] = Field(default_factory=list)
+    intent: Optional[str] = None
 
-    tool_results: dict[str, Any] = Field(default_factory=dict)
+    current_step: Optional[str] = None
+
+    collected_information: Dict[str, Any] = Field(
+        default_factory=dict
+    )
+
+    missing_information: List[str] = Field(
+        default_factory=list
+    )
+
+    pending_action: Optional[Dict[str, Any]] = None
+
+    conversation_context: List[Dict[str, Any]] = Field(
+        default_factory=list
+    )
+
+    tool_results: Dict[str, Any] = Field(
+        default_factory=dict
+    )
 
     status: AgentStatus = AgentStatus.IDLE
