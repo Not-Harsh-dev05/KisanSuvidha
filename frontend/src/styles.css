@@ -1,0 +1,187 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Kisan Suvidha — government service design system.
+ * Navy primary, muted government green, saffron accent, thin borders,
+ * small radii, minimal shadow. All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --font-sans: "Noto Sans", "Segoe UI", Arial, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-saffron: var(--saffron);
+  --color-saffron-foreground: var(--saffron-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-info-soft: var(--info-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 3px;
+  --background: oklch(0.985 0.002 250);
+  --foreground: oklch(0.22 0.02 250);
+  --surface: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 250);
+  --primary: oklch(0.33 0.078 258);
+  --primary-foreground: oklch(0.99 0.002 250);
+  --primary-dark: oklch(0.25 0.07 259);
+  --secondary: oklch(0.945 0.008 250);
+  --secondary-foreground: oklch(0.3 0.03 255);
+  --muted: oklch(0.955 0.005 250);
+  --muted-foreground: oklch(0.48 0.02 253);
+  --accent: oklch(0.93 0.02 250);
+  --accent-foreground: oklch(0.3 0.04 255);
+  --saffron: oklch(0.66 0.16 55);
+  --saffron-foreground: oklch(0.2 0.03 60);
+  --success: oklch(0.45 0.09 149);
+  --success-foreground: oklch(0.99 0.002 150);
+  --success-soft: oklch(0.94 0.03 150);
+  --warning: oklch(0.55 0.12 70);
+  --warning-foreground: oklch(0.99 0.002 70);
+  --warning-soft: oklch(0.95 0.05 80);
+  --destructive: oklch(0.5 0.19 27);
+  --destructive-foreground: oklch(0.99 0.002 27);
+  --destructive-soft: oklch(0.95 0.03 27);
+  --info-soft: oklch(0.95 0.02 250);
+  --border: oklch(0.87 0.008 250);
+  --border-strong: oklch(0.74 0.015 252);
+  --input: oklch(0.8 0.012 252);
+  --ring: oklch(0.45 0.1 258);
+  --chart-1: oklch(0.33 0.078 258);
+  --chart-2: oklch(0.45 0.09 149);
+  --chart-3: oklch(0.66 0.16 55);
+  --chart-4: oklch(0.55 0.05 252);
+  --chart-5: oklch(0.72 0.03 252);
+}
+
+.dark {
+  --background: oklch(0.13 0.02 258);
+  --foreground: oklch(0.93 0.008 252);
+  --surface: oklch(0.17 0.025 258);
+  --card: oklch(0.17 0.025 258);
+  --card-foreground: oklch(0.93 0.008 252);
+  --popover: oklch(0.17 0.025 258);
+  --popover-foreground: oklch(0.93 0.008 252);
+  --primary: oklch(0.55 0.1 258);
+  --primary-foreground: oklch(0.99 0.002 250);
+  --primary-dark: oklch(0.72 0.09 258);
+  --secondary: oklch(0.2 0.025 258);
+  --secondary-foreground: oklch(0.88 0.01 252);
+  --muted: oklch(0.22 0.02 258);
+  --muted-foreground: oklch(0.62 0.025 253);
+  --accent: oklch(0.25 0.03 258);
+  --accent-foreground: oklch(0.88 0.01 255);
+  --saffron: oklch(0.72 0.17 55);
+  --saffron-foreground: oklch(0.15 0.04 60);
+  --success: oklch(0.55 0.1 149);
+  --success-foreground: oklch(0.99 0.002 150);
+  --success-soft: oklch(0.2 0.04 150);
+  --warning: oklch(0.65 0.13 70);
+  --warning-foreground: oklch(0.15 0.03 70);
+  --warning-soft: oklch(0.22 0.05 80);
+  --destructive: oklch(0.6 0.2 27);
+  --destructive-foreground: oklch(0.99 0.002 27);
+  --destructive-soft: oklch(0.2 0.05 27);
+  --info-soft: oklch(0.2 0.03 250);
+  --border: oklch(0.3 0.025 255);
+  --border-strong: oklch(0.42 0.03 252);
+  --input: oklch(0.35 0.028 252);
+  --ring: oklch(0.55 0.1 258);
+  --chart-1: oklch(0.55 0.1 258);
+  --chart-2: oklch(0.55 0.1 149);
+  --chart-3: oklch(0.72 0.17 55);
+  --chart-4: oklch(0.6 0.07 252);
+  --chart-5: oklch(0.75 0.04 252);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-size: var(--gov-base-font-size, 16px);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--saffron);
+    outline-offset: 1px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+}
+
+@utility gov-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+@utility gov-panel-heading {
+  background-color: var(--secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--primary-dark);
+}
+
+@utility gov-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
